@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_log"
+        android:title="LOG"
+        android:icon="@drawable/ic_log"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menu_fft"
+        android:title="FFT Graph"
+        android:icon="@drawable/ic_graph"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menu_main"
+        android:title="Main"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom|withText" />
+</menu>
