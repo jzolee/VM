@@ -1,8 +1,0 @@
-<!-- Fájl elérési utak (app/src/main/res/xml/file_paths.xml) -->
-<paths>
-    <files-path name="logs" path="logs/"/>
-    <external-path name="documents" path="Documents/"/>
-    <external-files-path name="sensor_data" path="SensorData/"/>
-    <external-path name="external_docs" path="Documents/"/>
-    <external-files-path name="app_docs" path="Documents/"/>
-</paths>
