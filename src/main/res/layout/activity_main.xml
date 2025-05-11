@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Fő nézet -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:keepScreenOn="true"
+        android:visibility="visible"
+        tools:context=".MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:gravity="center"
+                    android:text="STATE"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewRssi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="RSSI"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewState" />
+
+                <TextView
+                    android:id="@+id/textViewBattery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="BATTERY"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRssi"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintStart_toEndOf="@+id/textViewRssi"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRssi" />
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peak:"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRpm"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRpm" />
+
+                <TextView
+                    android:id="@+id/textViewRpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="RPM"
+                    android:textSize="48sp"
+                    app:layout_constraintEnd_toStartOf="@+id/textView2"
+                    app:layout_constraintStart_toEndOf="@+id/textViewName"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBattery" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="rpm"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRpm"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRpm" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="vRMS:"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRms"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRms" />
+
+                <TextView
+                    android:id="@+id/textViewRms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="RMS"
+                    android:textSize="60sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewRpm" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="in/s"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRms"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRms" />
+
+                <Switch
+                    android:id="@+id/switchXEN"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:checked="false"
+                    android:minWidth="48dip"
+                    android:minHeight="32dip"
+                    android:onClick="onTapXEN"
+                    android:paddingStart="25dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="8dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="X"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/switchYEN"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/switchYEN" />
+
+                <Switch
+                    android:id="@+id/switchYEN"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="24dp"
+                    android:minWidth="48dip"
+                    android:minHeight="32dip"
+                    android:onClick="onTapYEN"
+                    android:paddingStart="25dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="8dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="Y"
+                    android:textSize="24sp"
+                    app:layout_constraintEnd_toStartOf="@+id/switchZEN"
+                    app:layout_constraintStart_toEndOf="@+id/switchXEN"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewRms" />
+
+                <Switch
+                    android:id="@+id/switchZEN"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="8dp"
+                    android:minWidth="48dip"
+                    android:minHeight="32dip"
+                    android:onClick="onTapZEN"
+                    android:paddingStart="25dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="8dp"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="Z"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/switchYEN"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/switchYEN" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter: "
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/seekBarFilter"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/seekBarFilter"
+                    app:layout_constraintVertical_bias="0.571" />
+
+                <TextView
+                    android:id="@+id/textViewFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="filter"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                <SeekBar
+                    android:id="@+id/seekBarFilter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:clickable="false"
+                    android:max="80"
+                    android:min="0"
+                    android:paddingStart="25dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="8dp"
+                    android:scaleY="2"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/switchYEN"
+                    app:layout_constraintTop_toBottomOf="@+id/switchYEN" />
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="100dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toBottomOf="@+id/seekBarFilter">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms1">
+
+                        <TextView
+                            android:id="@+id/textViewName1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Main rotor"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="- rpm: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRms1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text=" in/s"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms2">
+
+                        <TextView
+                            android:id="@+id/textViewName2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Main blades "
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="- rpm: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRms2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView23"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text=" in/s"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms3">
+
+                        <TextView
+                            android:id="@+id/textViewName3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tail rotor"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="- rpm: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRms3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="in/s"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms4">
+
+                        <TextView
+                            android:id="@+id/textViewName4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tail shaft"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="- rpm: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRms4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="in/s"
+                            android:textSize="16sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms5">
+
+                        <TextView
+                            android:id="@+id/textViewName5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ventilator"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="- rpm: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRms5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="in/s"
+                            android:textSize="16sp" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms6">
+
+                        <TextView
+                            android:id="@+id/textViewName6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Motor"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="- rpm: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRms6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView20"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="in/s"
+                            android:textSize="16sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms0">
+
+                        <TextView
+                            android:id="@+id/textViewName0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Common"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="- rpm: "
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/textViewRms0"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="24sp" />
+
+                        <TextView
+                            android:id="@+id/textView29"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="in/s"
+                            android:textSize="16sp" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/buttonRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="24dp"
+                    android:enabled="false"
+                    android:onClick="onTapRecord"
+                    android:text="REC"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!-- FFT nézet -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fftLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:keepScreenOn="true"
+        android:visibility="gone">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.github.mikephil.charting.charts.BarChart>
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <RadioButton
+                android:id="@+id/radioAcceleration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:checked="false"
+                android:text="Acceleration"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radioVelocity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:checked="true"
+                android:text="Velocity"
+                android:textColor="@color/white" />
+
+            <RadioButton
+                android:id="@+id/radioDisplacement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="5dp"
+                android:text="Displacement"
+                android:textColor="@color/white" />
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- LOG nézet -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ScrollView
+            android:id="@+id/scrollViewLog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/gray_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="5dp" />
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/buttonClearLog"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:includeFontPadding="false"
+            android:minWidth="48dip"
+            android:minHeight="32dip"
+            android:onClick="onTapClearLog"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="8dp"
+            android:text="Clear"
+            app:layout_constraintEnd_toEndOf="@+id/scrollViewLog"
+            app:layout_constraintTop_toTopOf="@+id/scrollViewLog" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
