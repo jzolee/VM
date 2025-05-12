@@ -1,0 +1,36 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffaadd3e8d4, pid=9060, tid=10360
+#
+# JRE version: OpenJDK Runtime Environment (21.0.5) (build 21.0.5+-12932927-b750.29)
+# Java VM: OpenJDK 64-Bit Server VM (21.0.5+-12932927-b750.29, mixed mode, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# Problematic frame:
+# V  [jvm.dll+0x3de8d4]
+#
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   https://youtrack.jetbrains.com/issues/JBR
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country=HU -Duser.language=hu -Duser.variant -javaagent:C:\Users\Juhász Zoltán\.gradle\wrapper\dists\gradle-8.10.2-bin\a04bxjujx95o3nb99gddekhwo\gradle-8.10.2\lib\agents\gradle-instrumentation-agent-8.10.2.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.10.2
+
+Host: Intel(R) Core(TM) i5-6300HQ CPU @ 2.30GHz, 4 cores, 7G,  Windows 10 , 64 bit Build 19041 (10.0.19041.5438)
+Time: Fri Feb 14 21:30:47 2025 Közép-európai téli idBuild 19041 (10.0.19041.5438) elapsed time: 8338.432916 seconds (0d 2h 18m 58s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001d741d89b50):  JavaThread "Unconstrained build operations Thread 6"        [_thread_in_vm, id=10360, stack(0x000000d339900000,0x000000d339a00000) (1024K)]
+
+Stack: [0x000000d339900000,0x000000d339a00000],  sp=0x000000d3399ff8a0,  free space=1022k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x3de8d4]
+V  [jvm.dll+0x6cfa42]
+V  [jvm.dll+0x3df586]
+V  [jvm.dll+0x3df817]
+V  [jvm.dll+0x46f8c5]
+V  [jvm.dll+0x3f0ce6]
+V  [jvm.dll+0x806368]
