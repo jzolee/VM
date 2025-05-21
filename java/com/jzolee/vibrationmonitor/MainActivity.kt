@@ -5,9 +5,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.text.InputType
-import android.view.ContextThemeWrapper
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
@@ -20,7 +18,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.graphics.toColorInt
 import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
@@ -31,7 +28,6 @@ import com.github.mikephil.charting.formatter.ValueFormatter
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
-import kotlin.Float
 
 @SuppressLint("MissingPermission", "DefaultLocale")
 class MainActivity : AppCompatActivity() {
@@ -182,10 +178,7 @@ class MainActivity : AppCompatActivity() {
 
             // Member Implementation (Required)
             // Keeps the track of progress of the seekbar
-            override fun onProgressChanged(
-                seekBar: SeekBar, progress: Int,
-                fromUser: Boolean
-            ) {
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 textViewFilter.text = "$progress"
                 // Show the progress when progress was less than 100
                 //if (progress < 100) {
@@ -242,17 +235,12 @@ class MainActivity : AppCompatActivity() {
             val key = "name$index"
             val savedName = prefs.getString(key, defaultLabel)
             textView.text = savedName
-
             textView.setOnLongClickListener {
-                val editText = EditText(ContextThemeWrapper(this, R.style.AppEditText)).apply {
+                val editText = EditText(this).apply {
                     setText(textView.text)
-                    setTextColor(Color.WHITE) // <-- kódból kényszerített fehér szín
                     setPadding(50, 50, 50, 50)
                 }
-
-                val themedContext = ContextThemeWrapper(this, R.style.AppDialogTheme)
-
-                AlertDialog.Builder(themedContext)
+                AlertDialog.Builder(this)
                     .setTitle("Rename")
                     .setView(editText)
                     .setPositiveButton("Save") { _, _ ->
@@ -276,18 +264,12 @@ class MainActivity : AppCompatActivity() {
         )
         rpmViews.forEachIndexed { index, textView ->
             textView.setOnLongClickListener {
-                val editText = EditText(ContextThemeWrapper(this, R.style.AppEditText)).apply {
+                val editText = EditText(this).apply {
                     inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
                     setText(String.format("%.0f", sensor.rpm[index + 1]))
-                    setTextColor(Color.WHITE)
-                    //setHintTextColor(Color.GRAY)
-                    //setBackgroundColor(Color.BLACK)
                     setPadding(50, 50, 50, 50)
                 }
-
-                val themedContext = ContextThemeWrapper(this, R.style.AppDialogTheme)
-
-                AlertDialog.Builder(themedContext)
+                AlertDialog.Builder(this)
                     .setTitle("Modify RPM")
                     .setView(editText)
                     .setPositiveButton("Save") { _, _ ->
@@ -317,12 +299,7 @@ class MainActivity : AppCompatActivity() {
         if (menu != null) {
             menuRef = menu
         }
-        //return true
 
-        val wrapper = ContextThemeWrapper(this, R.style.AppPopupMenu)
-        val inflater = MenuInflater(wrapper)
-        inflater.inflate(R.menu.main_menu, menu)
-        if (menu != null) menuRef = menu
         return true
     }
 
@@ -451,7 +428,6 @@ class MainActivity : AppCompatActivity() {
             sensor.control = sensor.control and ControlMode.XEN.inv()
         }
         switchXEN.isEnabled = false
-        switchXEN.setTextColor("#AAAAAA".toColorInt())
         sendControl()
     }
 
@@ -462,7 +438,6 @@ class MainActivity : AppCompatActivity() {
             sensor.control = sensor.control and ControlMode.YEN.inv()
         }
         switchYEN.isEnabled = false
-        switchYEN.setTextColor("#AAAAAA".toColorInt())
         sendControl()
     }
 
@@ -473,7 +448,6 @@ class MainActivity : AppCompatActivity() {
             sensor.control = sensor.control and ControlMode.ZEN.inv()
         }
         switchZEN.isEnabled = false
-        switchZEN.setTextColor("#AAAAAA".toColorInt())
         sendControl()
     }
 
@@ -512,13 +486,10 @@ class MainActivity : AppCompatActivity() {
     private fun updateControls() {
         switchXEN.isEnabled = true
         switchXEN.isChecked = sensor.control and ControlMode.XEN == ControlMode.XEN
-        if (switchXEN.isChecked) switchXEN.setTextColor("#FFFFFF".toColorInt())
         switchYEN.isEnabled = true
         switchYEN.isChecked = sensor.control and ControlMode.YEN == ControlMode.YEN
-        if (switchYEN.isChecked) switchYEN.setTextColor("#FFFFFF".toColorInt())
         switchZEN.isEnabled = true
         switchZEN.isChecked = sensor.control and ControlMode.ZEN == ControlMode.ZEN
-        if (switchZEN.isChecked) switchZEN.setTextColor("#FFFFFF".toColorInt())
         seekBarFilter.isEnabled = true
         val filter = sensor.filter * 100.0f
         seekBarFilter.setProgress(filter.toInt(), true)
@@ -649,7 +620,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateFFTData() {
         for (i in 0 until sensor.fft.size) {
-            fftData[i.toFloat()+1f] = sensor.fft[i]
+            fftData[i.toFloat() + 1f] = sensor.fft[i]
         }
 
         // Konvertáld a Map-et BarEntry listává

@@ -133,9 +133,7 @@
                     android:scaleX="1.5"
                     android:scaleY="1.5"
                     android:text="X"
-                    android:textColor="#AAAAAA"
                     android:textSize="@dimen/text_size_24"
-                    android:theme="@style/Switch"
                     app:layout_constraintBottom_toBottomOf="@+id/switchYEN"
                     app:layout_constraintStart_toStartOf="@+id/textViewState"
                     app:layout_constraintTop_toTopOf="@+id/switchYEN" />
@@ -153,9 +151,7 @@
                     android:scaleX="1.5"
                     android:scaleY="1.5"
                     android:text="Y"
-                    android:textColor="#AAAAAA"
                     android:textSize="@dimen/text_size_24"
-                    android:theme="@style/Switch"
                     app:layout_constraintEnd_toStartOf="@+id/switchZEN"
                     app:layout_constraintStart_toEndOf="@+id/switchXEN"
                     app:layout_constraintTop_toBottomOf="@+id/textViewRms" />
@@ -173,9 +169,7 @@
                     android:scaleX="1.5"
                     android:scaleY="1.5"
                     android:text="Z"
-                    android:textColor="#AAAAAA"
                     android:textSize="@dimen/text_size_24"
-                    android:theme="@style/Switch"
                     app:layout_constraintBottom_toBottomOf="@+id/switchYEN"
                     app:layout_constraintEnd_toEndOf="@+id/textViewState"
                     app:layout_constraintTop_toTopOf="@+id/switchYEN" />
@@ -215,7 +209,6 @@
                     android:paddingEnd="@dimen/space_16"
                     android:paddingBottom="@dimen/space_8"
                     android:scaleY="2"
-                    android:theme="@style/SeekBar"
                     app:layout_constraintEnd_toEndOf="@+id/textViewState"
                     app:layout_constraintStart_toEndOf="@+id/textViewFilter"
                     app:layout_constraintTop_toBottomOf="@+id/switchYEN" />
@@ -674,9 +667,6 @@
             android:layout_marginTop="@dimen/space_5"
             android:layout_marginEnd="@dimen/space_10"
             android:backgroundTint="#00838F"
-            android:includeFontPadding="false"
-            android:minWidth="48dip"
-            android:minHeight="32dip"
             android:onClick="onTapClearLog"
             android:paddingLeft="@dimen/space_16"
             android:paddingTop="@dimen/space_8"
