@@ -151,7 +151,7 @@ class LogFile private constructor(
         writer?.apply {
             write("# Start time: ${dateFormat.format(Date(System.currentTimeMillis()))}\n")
             write("# Frequency range: 1-104Hz (1Hz step)\n")
-            write("Timestamp,RMS,$frequencyHeader\n")
+            write("Timestamp, $frequencyHeader\n")
             flush()
         }
     }

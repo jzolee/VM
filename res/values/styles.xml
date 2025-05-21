@@ -1,17 +1,50 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat">
-        <!-- Alap színek -->
+        <!-- Alkalmazás elsődleges színe (Toolbar háttér, kiemelt elemek) -->
         <item name="colorPrimary">@android:color/black</item>
+
+        <!-- Állapotsáv (status bar) színe -->
         <item name="colorPrimaryDark">@android:color/black</item>
+
+        <!-- Kiemelések és kapcsolók aktív állapotának színe -->
         <item name="colorAccent">#FFDD77</item>
 
-        <!-- Háttér és szöveg -->
+        <!-- Teljes ablak háttérszíne (activity háttér) -->
         <item name="android:windowBackground">@android:color/black</item>
+
+        <!-- Alap szövegszín (TextView, Button stb.) -->
         <item name="android:textColor">@android:color/white</item>
 
-        <!-- Vezérlőelemek színei -->
+        <!-- Ikonok, pl. CheckBox, Switch alap színe inaktív állapotban -->
         <item name="colorControlNormal">@android:color/white</item>
+
+        <!-- Ikonok aktív állapota (pl. bejelölt Switch, RadioButton) -->
         <item name="colorControlActivated">#FFDD77</item>
+
+        <!-- Interaktív elemek kiemelése érintéskor (pl. SeekBar ujjlenyomat) -->
         <item name="colorControlHighlight">#FFDD77</item>
+
+        <!-- Popup menü (overflow menu, Spinner stb.) háttérszíne -->
+        <item name="android:popupBackground">#2C2C2C</item> <!-- sötétszürke, nem fekete -->
+
+        <!-- Menü és popup szöveg színe (ha nem öröklődik automatikusan) -->
+        <item name="android:textColorPrimary">@android:color/white</item>
+
+        <!-- Gombokban, dialógusban megjelenő másodlagos szövegszín -->
+        <item name="android:textColorSecondary">@android:color/white</item>
+
+        <!-- Dialógusok címsorának háttérszíne (ha használod AlertDialog-ot) -->
+        <item name="android:alertDialogTheme">@style/CustomDialogTheme</item>
     </style>
- </resources>
+
+    <!-- Dialógusokhoz külön stílus -->
+    <style name="CustomDialogTheme" parent="Theme.AppCompat.Dialog">
+        <!-- Dialog teljes háttere -->
+        <item name="android:background">#2C2C2C</item>
+        <!-- Szöveg dialógusban -->
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <!-- Kiemelések, például pozitív gombszín -->
+        <item name="colorAccent">#FFDD77</item>
+    </style>
+</resources>

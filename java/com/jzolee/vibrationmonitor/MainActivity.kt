@@ -452,31 +452,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onTapRms0(view: View) {
-        actRpmIdx = 0
+        updateMainDisplay(0)
     }
 
     fun onTapRms1(view: View) {
-        actRpmIdx = 1
+        updateMainDisplay(1)
     }
 
     fun onTapRms2(view: View) {
-        actRpmIdx = 2
+        updateMainDisplay(2)
     }
 
     fun onTapRms3(view: View) {
-        actRpmIdx = 3
+        updateMainDisplay(3)
     }
 
     fun onTapRms4(view: View) {
-        actRpmIdx = 4
+        updateMainDisplay(4)
     }
 
     fun onTapRms5(view: View) {
-        actRpmIdx = 5
+        updateMainDisplay(5)
     }
 
     fun onTapRms6(view: View) {
-        actRpmIdx = 6
+        updateMainDisplay(6)
     }
 
     private fun sendControl() {
@@ -557,6 +557,55 @@ class MainActivity : AppCompatActivity() {
         //barChart.marker = marker
     }
 
+    private fun updateMainDisplay(new: Int) {
+
+        actRpmIdx = new
+
+        when (actRpmIdx) {
+            0 -> {
+                textViewName.text = textViewName0.text
+                textViewRpm.text = textViewRpm0.text//String.format("%.0f", sensor.rpm[0])
+                textViewRms.text = textViewRms0.text//String.format("%.2f", sensor.rms[0])
+            }
+
+            1 -> {
+                textViewName.text = textViewName1.text
+                textViewRpm.text = textViewRpm1.text//String.format("%.0f", sensor.rpm[1])
+                textViewRms.text = textViewRms1.text//String.format("%.2f", sensor.rms[1])
+            }
+
+            2 -> {
+                textViewName.text = textViewName2.text
+                textViewRpm.text = textViewRpm2.text//String.format("%.0f", sensor.rpm[2])
+                textViewRms.text = textViewRms2.text//String.format("%.2f", sensor.rms[2])
+            }
+
+            3 -> {
+                textViewName.text = textViewName3.text
+                textViewRpm.text = textViewRpm3.text//String.format("%.0f", sensor.rpm[3])
+                textViewRms.text = textViewRms3.text//String.format("%.2f", sensor.rms[3])
+            }
+
+            4 -> {
+                textViewName.text = textViewName4.text
+                textViewRpm.text = textViewRpm4.text//String.format("%.0f", sensor.rpm[4])
+                textViewRms.text = textViewRms4.text//String.format("%.2f", sensor.rms[4])
+            }
+
+            5 -> {
+                textViewName.text = textViewName5.text
+                textViewRpm.text = textViewRpm5.text//String.format("%.0f", sensor.rpm[5])
+                textViewRms.text = textViewRms5.text//String.format("%.2f", sensor.rms[5])
+            }
+
+            6 -> {
+                textViewName.text = textViewName6.text
+                textViewRpm.text = textViewRpm6.text//String.format("%.0f", sensor.rpm[6])
+                textViewRms.text = textViewRms6.text//String.format("%.2f", sensor.rms[6])
+            }
+        }
+    }
+
     private fun updateData() {
 
         updateFFTData()
@@ -573,49 +622,7 @@ class MainActivity : AppCompatActivity() {
         textViewRms5.text = String.format("%.2f", sensor.rms[5])
         textViewRms6.text = String.format("%.2f", sensor.rms[6])
 
-        when (actRpmIdx) {
-            0 -> {
-                textViewName.text = textViewName0.text
-                textViewRpm.text = String.format("%.0f", sensor.rpm[0])
-                textViewRms.text = String.format("%.2f", sensor.rms[0])
-            }
-
-            1 -> {
-                textViewName.text = textViewName1.text
-                textViewRpm.text = String.format("%.0f", sensor.rpm[1])
-                textViewRms.text = String.format("%.2f", sensor.rms[1])
-            }
-
-            2 -> {
-                textViewName.text = textViewName2.text
-                textViewRpm.text = String.format("%.0f", sensor.rpm[2])
-                textViewRms.text = String.format("%.2f", sensor.rms[2])
-            }
-
-            3 -> {
-                textViewName.text = textViewName3.text
-                textViewRpm.text = String.format("%.0f", sensor.rpm[3])
-                textViewRms.text = String.format("%.2f", sensor.rms[3])
-            }
-
-            4 -> {
-                textViewName.text = textViewName4.text
-                textViewRpm.text = String.format("%.0f", sensor.rpm[4])
-                textViewRms.text = String.format("%.2f", sensor.rms[4])
-            }
-
-            5 -> {
-                textViewName.text = textViewName5.text
-                textViewRpm.text = String.format("%.0f", sensor.rpm[5])
-                textViewRms.text = String.format("%.2f", sensor.rms[5])
-            }
-
-            6 -> {
-                textViewName.text = textViewName6.text
-                textViewRpm.text = String.format("%.0f", sensor.rpm[6])
-                textViewRms.text = String.format("%.2f", sensor.rms[6])
-            }
-        }
+        updateMainDisplay(actRpmIdx)
     }
 
     private fun updateFFTData() {
