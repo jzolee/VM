@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_exit"
+        android:icon="@drawable/ic_exit"
+        android:title="Exit"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menu_start_record"
+        android:icon="@drawable/ic_record"
+        android:title="Felvétel indítása"
+        android:visible="false"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menu_stop_record"
+        android:title="Felvétel leállítása"
+        android:icon="@drawable/ic_stop"
+        app:showAsAction="ifRoom|withText"
+        android:visible="false" />
+    <item
+        android:id="@+id/menu_log"
+        android:icon="@drawable/ic_log"
+        android:title="Log"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menu_fft"
+        android:icon="@drawable/ic_graph"
+        android:title="FFT Graph"
+        app:showAsAction="ifRoom|withText" />
+    <item
+        android:id="@+id/menu_main"
+        android:title="Main"
+        android:icon="@drawable/ic_home"
+        app:showAsAction="ifRoom|withText" />
+</menu>

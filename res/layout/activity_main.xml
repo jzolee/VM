@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:visibility="visible">
+
+    <!-- Fő nézet -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:keepScreenOn="true"
+        android:visibility="visible"
+        tools:context=".MainActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textViewState"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_8"
+                    android:layout_marginEnd="@dimen/space_16"
+                    android:gravity="center"
+                    android:text="STATE"
+                    android:textSize="@dimen/text_size_18"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textViewRssi"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:gravity="start"
+                    android:text="RSSI"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewState" />
+
+                <TextView
+                    android:id="@+id/textViewBattery"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="BATTERY"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRssi"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintStart_toEndOf="@+id/textViewRssi"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRssi" />
+
+                <TextView
+                    android:id="@+id/textViewName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Peak:"
+                    android:textSize="@dimen/text_size_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRpm"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRpm" />
+
+                <TextView
+                    android:id="@+id/textViewRpm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_16"
+                    android:text="RPM"
+                    android:textSize="@dimen/text_size_48"
+                    app:layout_constraintEnd_toStartOf="@+id/textView2"
+                    app:layout_constraintStart_toEndOf="@+id/textViewName"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewBattery" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="rpm"
+                    android:textSize="@dimen/text_size_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRpm"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRpm" />
+
+                <TextView
+                    android:id="@+id/textView56"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="vRMS:"
+                    android:textSize="@dimen/text_size_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRms"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRms" />
+
+                <TextView
+                    android:id="@+id/textViewRms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:text="RMS"
+                    android:textSize="@dimen/text_size_60"
+                    app:layout_constraintEnd_toStartOf="@+id/textView"
+                    app:layout_constraintStart_toEndOf="@+id/textView56"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewRpm" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="in/s"
+                    android:textSize="@dimen/text_size_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textViewRms"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/textViewRms" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchXEN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="onTapXEN"
+                    android:paddingStart="@dimen/space_25"
+                    android:paddingTop="@dimen/space_8"
+                    android:paddingEnd="@dimen/space_8"
+                    android:paddingBottom="@dimen/space_8"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="X"
+                    android:textColor="#AAAAAA"
+                    android:textSize="@dimen/text_size_24"
+                    android:theme="@style/Switch"
+                    app:layout_constraintBottom_toBottomOf="@+id/switchYEN"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/switchYEN" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchYEN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:onClick="onTapYEN"
+                    android:paddingStart="@dimen/space_25"
+                    android:paddingTop="@dimen/space_8"
+                    android:paddingEnd="@dimen/space_8"
+                    android:paddingBottom="@dimen/space_8"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="Y"
+                    android:textColor="#AAAAAA"
+                    android:textSize="@dimen/text_size_24"
+                    android:theme="@style/Switch"
+                    app:layout_constraintEnd_toStartOf="@+id/switchZEN"
+                    app:layout_constraintStart_toEndOf="@+id/switchXEN"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewRms" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switchZEN"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/space_8"
+                    android:onClick="onTapZEN"
+                    android:paddingStart="@dimen/space_25"
+                    android:paddingTop="@dimen/space_8"
+                    android:paddingEnd="@dimen/space_8"
+                    android:paddingBottom="@dimen/space_8"
+                    android:scaleX="1.5"
+                    android:scaleY="1.5"
+                    android:text="Z"
+                    android:textColor="#AAAAAA"
+                    android:textSize="@dimen/text_size_24"
+                    android:theme="@style/Switch"
+                    app:layout_constraintBottom_toBottomOf="@+id/switchYEN"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/switchYEN" />
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Filter: "
+                    android:textSize="@dimen/text_size_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/seekBarFilter"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toTopOf="@+id/seekBarFilter"
+                    app:layout_constraintVertical_bias="0.571" />
+
+                <TextView
+                    android:id="@+id/textViewFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="filter"
+                    android:textSize="@dimen/text_size_24"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                    app:layout_constraintStart_toEndOf="@+id/textView5"
+                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+                <SeekBar
+                    android:id="@+id/seekBarFilter"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_24"
+                    android:layout_marginTop="@dimen/space_40"
+                    android:clickable="false"
+                    android:max="80"
+                    android:min="0"
+                    android:paddingStart="@dimen/space_25"
+                    android:paddingTop="@dimen/space_8"
+                    android:paddingEnd="@dimen/space_16"
+                    android:paddingBottom="@dimen/space_8"
+                    android:scaleY="2"
+                    android:theme="@style/SeekBar"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintStart_toEndOf="@+id/textViewFilter"
+                    app:layout_constraintTop_toBottomOf="@+id/switchYEN" />
+
+                <TableLayout
+                    android:id="@+id/tableLayout"
+                    android:layout_width="@dimen/space_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_24"
+                    android:layout_marginBottom="@dimen/space_100"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textViewState"
+                    app:layout_constraintStart_toStartOf="@+id/textViewState"
+                    app:layout_constraintTop_toBottomOf="@+id/seekBarFilter">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms1">
+
+                        <TextView
+                            android:id="@+id/textViewName1"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:clickable="true"
+                            android:longClickable="true"
+                            android:onClick="onTapRms1"
+                            android:text="Main rotor"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm1"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:clickable="true"
+                            android:gravity="end"
+                            android:longClickable="true"
+                            android:onClick="onTapRms1"
+                            android:text="rpm"
+                            android:textSize="@dimen/text_size_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" rpm"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/textViewRms1"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in/s"
+                            android:textSize="@dimen/text_size_16" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms2">
+
+                        <TextView
+                            android:id="@+id/textViewName2"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:clickable="true"
+                            android:longClickable="true"
+                            android:onClick="onTapRms2"
+                            android:text="Main blades "
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm2"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:clickable="true"
+                            android:gravity="end"
+                            android:longClickable="true"
+                            android:onClick="onTapRms2"
+                            android:text="rpm"
+                            android:textSize="@dimen/text_size_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" rpm"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/textViewRms2"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in/s"
+                            android:textSize="@dimen/text_size_16" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms3">
+
+                        <TextView
+                            android:id="@+id/textViewName3"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:clickable="true"
+                            android:longClickable="true"
+                            android:onClick="onTapRms3"
+                            android:text="Tail rotor"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm3"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:clickable="true"
+                            android:gravity="end"
+                            android:longClickable="true"
+                            android:onClick="onTapRms3"
+                            android:text="rpm"
+                            android:textSize="@dimen/text_size_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" rpm"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/textViewRms3"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in/s"
+                            android:textSize="@dimen/text_size_16" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms4">
+
+                        <TextView
+                            android:id="@+id/textViewName4"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:clickable="true"
+                            android:longClickable="true"
+                            android:onClick="onTapRms4"
+                            android:text="Tail shaft"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm4"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:clickable="true"
+                            android:gravity="end"
+                            android:longClickable="true"
+                            android:onClick="onTapRms4"
+                            android:text="rpm"
+                            android:textSize="@dimen/text_size_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" rpm"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/textViewRms4"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in/s"
+                            android:textSize="@dimen/text_size_16" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms5">
+
+                        <TextView
+                            android:id="@+id/textViewName5"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:clickable="true"
+                            android:longClickable="true"
+                            android:onClick="onTapRms5"
+                            android:text="Ventilator"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm5"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:clickable="true"
+                            android:gravity="end"
+                            android:longClickable="true"
+                            android:onClick="onTapRms5"
+                            android:text="rpm"
+                            android:textSize="@dimen/text_size_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" rpm"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/textViewRms5"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:clickable="false"
+                            android:focusable="false"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in/s"
+                            android:textSize="@dimen/text_size_16" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms6">
+
+                        <TextView
+                            android:id="@+id/textViewName6"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:clickable="true"
+                            android:longClickable="true"
+                            android:onClick="onTapRms6"
+                            android:text="Motor"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm6"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:clickable="true"
+                            android:gravity="end"
+                            android:longClickable="true"
+                            android:onClick="onTapRms6"
+                            android:text="rpm"
+                            android:textSize="@dimen/text_size_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" rpm"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/textViewRms6"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in/s"
+                            android:textSize="@dimen/text_size_16" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:onClick="onTapRms0">
+
+                        <TextView
+                            android:id="@+id/textViewName0"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="3"
+                            android:clickable="true"
+                            android:longClickable="true"
+                            android:onClick="onTapRms0"
+                            android:text="Peak"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:id="@+id/textViewRpm0"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="end"
+                            android:text="rpm"
+                            android:textSize="@dimen/text_size_20" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" rpm"
+                            android:textSize="@dimen/text_size_16" />
+
+                        <TextView
+                            android:id="@+id/textViewRms0"
+                            android:layout_width="@dimen/space_0"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.8"
+                            android:gravity="end"
+                            android:text="rms"
+                            android:textSize="@dimen/text_size_24" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=" in/s"
+                            android:textSize="@dimen/text_size_16" />
+
+                    </TableRow>
+
+                </TableLayout>
+
+                <Button
+                    android:id="@+id/buttonRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_32"
+                    android:layout_marginBottom="@dimen/space_24"
+                    android:backgroundTint="#C62828"
+                    android:enabled="false"
+                    android:onClick="onTapRecord"
+                    android:text="REC"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <!-- FFT nézet -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fftLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:keepScreenOn="true"
+        android:visibility="gone">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="@dimen/space_0"
+            android:layout_height="@dimen/space_0"
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_marginTop="@dimen/space_10"
+            android:layout_marginEnd="@dimen/space_10"
+            android:layout_marginBottom="@dimen/space_10"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.github.mikephil.charting.charts.BarChart>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- LOG nézet -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ScrollView
+            android:id="@+id/scrollViewLog"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_0"
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_marginTop="@dimen/space_10"
+            android:layout_marginEnd="@dimen/space_10"
+            android:layout_marginBottom="@dimen/space_10"
+            android:layout_weight="1"
+            android:background="@drawable/gray_border"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textViewLog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/space_5" />
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/buttonClearLog"
+            android:layout_width="@dimen/space_100"
+            android:layout_height="@dimen/space_50"
+            android:layout_marginTop="@dimen/space_5"
+            android:layout_marginEnd="@dimen/space_10"
+            android:backgroundTint="#00838F"
+            android:includeFontPadding="false"
+            android:minWidth="48dip"
+            android:minHeight="32dip"
+            android:onClick="onTapClearLog"
+            android:paddingLeft="@dimen/space_16"
+            android:paddingTop="@dimen/space_8"
+            android:paddingRight="@dimen/space_16"
+            android:paddingBottom="@dimen/space_8"
+            android:text="Clear"
+            app:layout_constraintEnd_toEndOf="@+id/scrollViewLog"
+            app:layout_constraintTop_toTopOf="@+id/scrollViewLog" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
