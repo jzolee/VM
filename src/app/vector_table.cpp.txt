@@ -1,0 +1,12 @@
+#include <stdint.h>
+
+extern int main();
+extern unsigned long _estack;
+
+using isr_handler_t = void(*)(void);
+
+__attribute__((section(".isr_vector")))
+const isr_handler_t vector_table[] = {
+  (isr_handler_t)&_estack,  // Initial MSP
+  (isr_handler_t)main       // Reset handler
+};
