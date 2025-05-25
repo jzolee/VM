@@ -1,4 +1,0 @@
-C:\.platformio\packages\toolchain-gccarmnoneeabi\bin\arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -nostartfiles -Wall -Os -c main.c -o main.o
-C:\.platformio\packages\toolchain-gccarmnoneeabi\bin\arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -nostartfiles -Wall -Os -c startup_nrf52840.S -o startup_nrf52840.o
-C:\.platformio\packages\toolchain-gccarmnoneeabi\bin\arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -nostartfiles -Wall -Os main.o startup_nrf52840.o -Tdispatch.ld -o firmware.elf
-C:\.platformio\packages\toolchain-gccarmnoneeabi\bin\arm-none-eabi-objcopy -O ihex firmware.elf firmware.hex
