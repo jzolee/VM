@@ -1,0 +1,17 @@
+﻿filelist.txt;867;2025-05-26 18:17
+platformio.ini;502;2025-05-26 17:55
+linker\nrf52840_s140_v7_app.ld;888;2025-05-26 00:03
+linker\nrf52840_s140_v7_original.ld;905;2025-05-26 18:06
+linker\nrf52840_s140_v7_updater.ld;892;2025-05-25 20:37
+src\firmware_layout.h;1029;2025-05-25 21:08
+src\app\main.cpp;1607;2025-05-26 18:08
+src\dispatcher\dispatch.ld;634;2025-05-25 21:40
+src\dispatcher\main.c;2294;2025-05-25 23:40
+src\dispatcher\startup_nrf52840.S;514;2025-05-25 21:36
+src\updater\main.cpp;1609;2025-05-26 18:08
+tools\auto_build.py;416;2025-05-25 07:23
+tools\hex_to_dfu_zip.py;2279;2025-05-26 17:58
+tools\merge_and_package.py;5860;2025-05-26 00:16
+tools\uf2conv.py;13246;2025-05-25 17:35
+tools\uf2families.json;9317;2025-05-16 20:00
+tools\verify_firmware_hex.py;4714;2025-05-25 21:12
